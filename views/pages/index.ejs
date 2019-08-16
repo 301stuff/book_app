@@ -12,5 +12,16 @@
   </head>
   <body>
     <h1>Hello World!</h1>
+    <form action="/search" method="POST">
+      <input type="text" placeholder="Enter a title or author" name= "search" required>
+      <label>Author
+        <input type="radio" name="search" value="author">
+      </label>
+      <label>Title
+        <input type="radio" name="search" value="title">
+      </label>
+      <button>Submit!</button>
+
+    </form>
   </body>
 </html>
