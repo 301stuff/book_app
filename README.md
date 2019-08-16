@@ -11,6 +11,9 @@
 HTML, CSS, jQuery, Java Script used for the front end of this app. 
 Java Script, Express, Dotenv, Superagent, Cors for the backend
 
+## Credentials
+https://stackoverflow.com/questions/4190885/converting-url-to-https-via-javascript
+
 
 ## Change Log
 
