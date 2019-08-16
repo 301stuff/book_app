@@ -20,11 +20,11 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 ***
 * Estimate of time needed to complete: **30minutes**
 * Start time: **5pm**
-* Finish time: ****
-* Actual time needed to complete: ****
+* Finish time: **5:45pm**
+* Actual time needed to complete: **45minutes**
 
-## **Driver:  ** 
-## **Navigator: ** 
+## **Driver:Morgan ** 
+## **Navigator:Ana ** 
 ***
 
 # Feature #2:
@@ -32,12 +32,12 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 ##  As a user, I want to search the Google Books API so that I can view the results of my search.
 ***
 * Estimate of time needed to complete: **1hour**
-* Start time: **pm**
-* Finish time: **pm**
-* Actual time needed to complete: ****
+* Start time: **6pm**
+* Finish time: **6.15pm**
+* Actual time needed to complete: **15minutes**
 
-## **Driver:  ** 
-## **Navigator: ** 
+## **Driver:  Morgan** 
+## **Navigator: Ana** 
 ***
 
 # Feature #3:
