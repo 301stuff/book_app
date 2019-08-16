@@ -18,8 +18,8 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 ***
 ## As a user, I want my application to load quickly so that I have an enjoyable experience.
 ***
-* Estimate of time needed to complete: ** hour**
-* Start time: **pm**
+* Estimate of time needed to complete: **30minutes**
+* Start time: **5pm**
 * Finish time: ****
 * Actual time needed to complete: ****
 
@@ -31,20 +31,20 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 ***
 ##  As a user, I want to search the Google Books API so that I can view the results of my search.
 ***
-* Estimate of time needed to complete: **2hour**
+* Estimate of time needed to complete: **1hour**
 * Start time: **pm**
 * Finish time: **pm**
 * Actual time needed to complete: ****
 
 ## **Driver:  ** 
-## **Navigator: Aaron** 
+## **Navigator: ** 
 ***
 
 # Feature #3:
 ***
-## Weather: As a user, I want to request current weather information so that I can learn more about the typical weather patterns in the location.
+## As a user, I want to be able to browse the search results.
 ***
-* Estimate of time needed to complete: **2hours**
+* Estimate of time needed to complete: **1hour**
 * Start time: ** **
 * Finish time: ** **
 * Actual time needed to complete: ** **
@@ -55,9 +55,9 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 
 # Feature #4:
 ***
-## EventBrite: As a user, I want to request information about events in the area so that users can learn about what is taking place in the location.
+## As a user, I want to view any error messages that occur during the usage of my book list application so that I know if something has gone wrong.
 ***
-* Estimate of time needed to complete: ** 1hour**
+* Estimate of time needed to complete: **1hour**
 * Start time: ** **
 * Finish time: ** **
 * Actual time needed to complete: ** **
@@ -66,5 +66,31 @@ Java Script, Express, Dotenv, Superagent, Cors for the backend
 ## **Navigator:** 
 ***
 
+
+# Feature #5:
+***
+## As a user, I want a simple, clean looking UI so that my application is easy to navigate.
+***
+* Estimate of time needed to complete: **1hour**
+* Start time: ** **
+* Finish time: ** **
+* Actual time needed to complete: ** **
+
+## **Driver:** 
+## **Navigator:** 
+***
+
+# Feature #6:
+***
+##  STRETCH: As a developer, I want to completely style my website
+***
+* Estimate of time needed to complete: **2hour**
+* Start time: ** **
+* Finish time: ** **
+* Actual time needed to complete: ** **
+
+## **Driver:** 
+## **Navigator:** 
+***
 
 
