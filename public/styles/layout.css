@@ -1,0 +1,50 @@
+h1{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    font-size: 1.5em;
+    text-align: left;
+    padding-left: 3%;
+}
+h2{
+    background-color: rgb(74, 74, 74);
+    width: 100%;
+    height:2.5em;
+    line-height:2.5em;
+    color: white;
+}
+
+.searchPg {
+    background-color:rgb(216, 216, 216); 
+    width:85%;
+    margin: 0% 5% 2% 5%;
+    border-width: 0px;
+    border-radius: 3px;
+    height: 4em;
+    padding:auto 0px;
+}
+form :first-child{
+    background-color: white;
+    margin-top: 3%;
+    height: 4em;
+}
+
+form :first-child label{
+   padding-left: 3em;
+}
+
+form{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button{
+    background-color: black;
+    color:white;
+    border-color: black;
+    width: 85%;
+    height: 4em;
+}
