@@ -47,8 +47,9 @@ h2{
     margin: 0% 5% 2% 5%;
     border-width: 0px;
     border-radius: 3px;
-    height: 4em;
+    /* height: 4em; */
     padding:auto 0px;
+    line-height: 4em;
 }
 form :first-child{
     background-color: white;

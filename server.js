@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 3000;
 //set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(express.static('./public/../'));
+
+//this what returns data fro our form as json object.
 app.use(express.urlencoded({extended:true}));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
