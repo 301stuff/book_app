@@ -3,7 +3,15 @@ header{
     flex-direction: row;
     width:100%;
     justify-content: space-between;
-
+    position:fixed;
+    top:0;
+    z-index: 10;
+   
+}
+main{
+    position: absolute;
+    top:14%;
+    width: 100%;
 }
 nav{
     color: white;
