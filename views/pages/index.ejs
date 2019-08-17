@@ -12,12 +12,12 @@
     <link href="../../public/styles/icons.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <nav>
+    <header>
       <h1>Best Books!</h1>
-      <i class="fa fa-bars" aria-hidden="true"></i>
-    </nav>
+      <nav class="fa fa-bars" aria-hidden="true"></i>
+    </header>
 
-
+    <main>
       <h2> Search by Title or Author</h2>
       <form action="/search" method="POST">
         <input class="searchPg" type="text" placeholder="Enter a title or author" name= "search" required>
@@ -28,7 +28,16 @@
           <input type="radio" name="search" value="author">
         </label>
        <button>Search the Google Books API</button>
-  
       </form>
+    </main> 
+
+    <footer>
+      <ul>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+      </ul>
+    </footer>
   </body>
 </html>

@@ -1,11 +1,11 @@
-nav{
+header{
     display: flex;
     flex-direction: row;
     width:100%;
     justify-content: space-between;
 
 }
-i{
+nav{
     color: white;
     background-color: black;
     padding-top: 1em;
@@ -65,4 +65,22 @@ button{
     width: 85%;
     height: 4em;
     font-size:1em;
+}
+
+footer{
+    position:fixed;
+   bottom: 0%;
+    /* left:47%; */
+    width: 100%;
+    background-color: black;
+   
+}
+
+footer ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+height: 50%;
+    margin-top:4% ;
 }

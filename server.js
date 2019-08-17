@@ -37,7 +37,7 @@ app.post('/search', (request, response)=>{
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => {
       console.log(results);
-      response.render('pages/searches/show', {searchResults: results})
+      response.render('pages/searches/show', {searchResults: results});
       
     }
     )
@@ -45,6 +45,7 @@ app.post('/search', (request, response)=>{
     .catch(error => {
       console.log(error);
       response.render('pages/error');
+      //response.render('pages/error', {error: error});
     });
 
 });
