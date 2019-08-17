@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book App</title>
+    <script src="https://kit.fontawesome.com/7ed99913b3.js"></script>
+    <link href="../../public/styles/reset.css" type="text/css" rel="stylesheet" />
+    <link href="../../public/styles/base.css" type="text/css" rel="stylesheet" />
+    <link href="../../public/styles/layout.css" type="text/css" rel="stylesheet" />
+    <link href="../../public/styles/icons.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>Best Books!</h1>
+      <nav class="fa fa-bars" aria-hidden="true"></i>
+    </header>
+
+    <main>
+      <h2> Search by Title or Author</h2>
+      <form action="/search" method="POST">
+        <input class="searchPg" type="text" placeholder="Enter a title or author" name= "search" required>
+        <label class = "searchPg">Title
+          <input type="radio" name="search" value="title">
+        </label>
+        <label class = "searchPg"> Author
+          <input type="radio" name="search" value="author">
+        </label>
+       <button class="searchButton">Search the Google Books API</button>
+      </form>
+    </main> 
+
+    <footer>
+      <ul>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+        <li>&#9898;</li>
+      </ul>
+    </footer>
+  </body>
+</html>

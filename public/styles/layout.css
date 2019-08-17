@@ -67,7 +67,7 @@ form{
     flex-direction: column;
 }
 
-button{
+button .searchButton{
     background-color: black;
     color:white;
     border-color: black;
