@@ -25,6 +25,7 @@
     "heroku": "^7.27.1",
     "nodemon": "^1.19.1",
     "npm": "^6.10.3",
+    "pg": "^7.12.1",
     "superagent": "^5.1.0"
   },
   "devDependencies": {},
