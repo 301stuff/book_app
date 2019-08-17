@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Results</title>
+    <script src="https://kit.fontawesome.com/7ed99913b3.js"></script>
+    <link href="../../public/styles/reset.css" type="text/css" rel="stylesheet" />
+    <link href="../../public/styles/base.css" type="text/css" rel="stylesheet" />
+    <link href="../../public/styles/layout.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <ul>
-        <% searchResults.forEach(item => { %>
-            <img src="<%= item.image %>" alt="book cover image">
-            <p>Title: <%= item.title %></p>
-            <p>Author: <%= item.author %></p>
-            <p class="descpription">Description: <%= item.description %></p>
-        <% }) %>
-    </ul>
+    <header>
+        <h1>Best Books!</h1>
+        <nav class="fa fa-bars" aria-hidden="true"></i>
+    </header>
+   <main>     
+        <ul>
+            <% searchResults.forEach(item => { %>
+                <img src="<%= item.image %>" alt="book cover image">
+                <p>Title: <%= item.title %></p>
+                <p>Author: <%= item.author %></p>
+                <p class="descpription">Description: <%= item.description %></p>
+            <% }) %>
+        </ul>
+    </main>  
+    <footer>
+        <ul>
+            <li>&#9898;</li>
+            <li>&#9898;</li>
+            <li>&#9898;</li>
+            <li>&#9898;</li>
+        </ul>
+    </footer>
 </body>
 </html>
