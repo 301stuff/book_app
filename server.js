@@ -39,6 +39,11 @@ app.get('/', getBooks);
 //get specific book info
 app.get('/books/:id', getBookDetails);
 
+//bad request error handle
+app.get('*', (request, response)=>{
+  response.render('pages/error');
+});
+
 //function to gather info from database and display specific book info. Called on line 39
 function getBookDetails(request, response){
   // requset.params.id comes from /books/:id
@@ -91,21 +96,16 @@ app.post('/search', (request, response)=>{
   if(request.body.search[1] === 'title') {url += `intitle:${request.body.search[0]}&maxResults=10`;}
   // console.log('search', url);
   superagent.get(url)
-
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => {
-
       response.render('pages/searches/show', {searchResults: results});
-
     }
     )
-
     .catch(error => {
       console.log(error);
       response.render('pages/error');
       //response.render('pages/error', {error: error});
     });
-
 });
 //book constructor
 function Book(data) {
