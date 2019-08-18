@@ -1,3 +1,30 @@
+.hidden{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* header{
     display: flex;
     flex-direction: row;
@@ -80,7 +107,7 @@ footer{
     position:fixed;
    bottom: 0%;
     /* left:47%; */
-    width: 100%;
+    /* width: 100%;
     background-color: black;
    
 }
@@ -92,4 +119,6 @@ footer ul{
     align-content: center;
 height: 50%;
     margin-top:4% ;
-} */ */
+} */
+
+
