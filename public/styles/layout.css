@@ -1,4 +1,4 @@
-header{
+/* header{
     display: flex;
     flex-direction: row;
     width:100%;
@@ -48,7 +48,7 @@ h2{
     border-width: 0px;
     border-radius: 3px;
     /* height: 4em; */
-    padding:auto 0px;
+    /* padding:auto 0px;
     line-height: 4em;
 }
 form :first-child{
@@ -92,4 +92,4 @@ footer ul{
     align-content: center;
 height: 50%;
     margin-top:4% ;
-}
+} */ */

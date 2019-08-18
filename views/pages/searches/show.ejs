@@ -15,6 +15,27 @@
                 <p>Author: <%= item.author %></p>
                 <p class="descpription">Description: <%= item.description %></p>
                 <button class="viewdetails" name="<%= item.id %>">Select</button>
+                <form action="/books" method="POST">
+                    <label>Title:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.title %>">
+                    </label>
+                    <label> Author:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.author %>">
+                    </label>
+                    <label>Description:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.description %>">
+                    </label>
+                    <label>ISBN:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.isbn %>">
+                    </label>
+                    <label>Bookshelf:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.bookshelf %>">
+                    </label>
+                    <label>Image URL:
+                        <input class="DetailForm" type="text" name="EditForm" value="<%= item.image %>">
+                    </label>
+                    <button>Save to Database</button>
+                </form>
             <% }) %>
         </ul>
     </main>  
