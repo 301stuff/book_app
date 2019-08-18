@@ -107,6 +107,29 @@ app.post('/search', (request, response)=>{
       //response.render('pages/error', {error: error});
     });
 });
+
+//add to database from search form
+app.post('/books', (request, response)=>{
+  // console.log(request);
+  const SQL = `INSERT INTO books(author, title, isbn, image, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+  const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
+
+  return client.query(SQL, values)
+    .then(res=>{
+      if(res.rowCount >0){
+        response.redirect(`/books/${res.rows[0].id}`);
+      }
+      
+    })
+    .catch(errorHandle);
+
+});
+
+function errorHandle(error, response){
+  response.redirect('pages/error', {error: error});
+}
+
+
 //book constructor
 function Book(data) {
   this.title = (data.title) ? data.title : 'No title found';
