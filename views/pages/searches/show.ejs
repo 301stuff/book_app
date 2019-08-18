@@ -19,19 +19,19 @@
                     
                     <form class="DetailForm" action="/books" method="POST">
                         <label>Title:
-                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.title %>">
+                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.title %>" required>
                         </label>
                         <label> Author:
-                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.author %>">
+                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.author %>" required>
                         </label>
                         <label>Description:
-                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.description %>">
+                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.description %>" required>
                         </label>
                         <label>ISBN:
-                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.isbn %>">
+                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.isbn %>" required>
                         </label>
                         <label>Bookshelf:
-                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.bookshelf %>">
+                            <input class="DetailForm" type="text" name="EditForm" value="<%= item.bookshelf %>" required>
                         </label>
                         <label>Image URL:
                             <input class="DetailForm" type="text" name="EditForm" value="<%= item.image %>">
