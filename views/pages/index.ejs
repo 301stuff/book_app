@@ -18,13 +18,17 @@
    <main>  
      <h2>Saved books <%=  booksDb.length %></h2>   
         <ul>
-            <% booksDb.forEach(item => { %>
-                <img src="<%= item.image %>" alt="book cover image">
+           <% booksDb.forEach(item => { %>
+            <li>
+                <!-- //////////////////image changed to image_url////////////////// -->
+                <img src="<%= item.image_url %>" alt="book cover image">
                 <p>Title: <%= item.title %></p>
                 <p>Author: <%= item.author %></p>
                 <!-- <p class="descpription">Description: <%= item.description %></p> -->
                 <button class="viewdetails" name="<%= item.id %>">View Details</button>
+            </li>
             <% }) %>
+            
         </ul>
     </main>  
     <footer>

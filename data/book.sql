@@ -11,5 +11,5 @@ bookshelf VARCHAR(255)
 );
 
 INSERT INTO books (author, title, isbn, image_url, description, bookshelf)
-VALUES ('test author1', 'test title1', 'test isbn1', 'test image_url1', 'test description1', 'test bookshelf1'),
-('test author2', 'test title2', 'test isbn2', 'test image_url2', 'test description2', 'test bookshelf2');
+VALUES ('test author1', 'test title1', 'test isbn1', 'https://books.google.com/books/content?id=1Vs9AwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', 'test description1', 'test bookshelf1'),
+('test author2', 'test title2', 'test isbn2', 'https://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'test description2', 'test bookshelf2');

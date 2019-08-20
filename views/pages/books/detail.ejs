@@ -19,7 +19,8 @@
        
         <ul>
             <% bookDetail.forEach(item => { %>
-                <img src="<%= item.image %>" alt="book cover image">
+                <!-- /////////////////image changed to image_url//////////////////// -->
+                <img src="<%= item.image_url %>" alt="book cover image">
                 <p>Title: <%= item.title %></p>
                 <p>Author: <%= item.author %></p>
                 <p class="descpription">Description: <%= item.description %></p>

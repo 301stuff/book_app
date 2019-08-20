@@ -12,6 +12,7 @@ main{
     position: absolute;
     top:14%;
     width: 100%;
+    margin-bottom: 14%;
 }
 nav{
     color: white;
@@ -41,6 +42,10 @@ h2{
     color: white;
 }
 
+h2 ul li{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
 .searchPg {
     background-color:rgb(216, 216, 216); 
     width:85%;
@@ -82,6 +87,7 @@ footer{
     /* left:47%; */
     width: 100%;
     background-color: black;
+    margin-top: 50px;
    
 }
 
