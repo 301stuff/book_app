@@ -39,7 +39,10 @@ app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 //initial page (file index.ejs)
 app.get('/', getBooks);
 
+
 app.get('/books/:id', getBookDetails);
+
+app.post('/books', postBook);
 
 //new search page (file searches/new.ejs)
 app.get('/search',(request, response)=>{
@@ -51,10 +54,11 @@ app.post('/search', postSearch);
 //request for singular book
 
 
-//Error page
-app.get('/error', (request, response)=>{
+//bad request error handle
+app.get('*', (request, response)=>{
   response.render('pages/error');
 });
+
 
 //=======================================Constructor Functions==============================================//
 //book constructor
@@ -82,16 +86,12 @@ function getBooks(request, response){
       if(result.rowCount > 0 ) {
         // console.log("results:", result);
         response.render('pages/index', {booksDb: result.rows});
-        
-
       }
     });
 }
 
 //get details about single book
 function getBookDetails(request, response){
-  // requset.params.id comes from /books/:id
-  // let id = request.params.id ? request.params.id : request.body.id
   let id = request.params.id;
   console.log('id: ', id);
   let SQL = 'SELECT * FROM books WHERE id=$1;';
@@ -99,12 +99,11 @@ function getBookDetails(request, response){
     .then(res=> {
       if(res.rowCount > 0) {
         response.render('./pages/books/showBook', {bookDetail: res.rows});
-        ///////////////// added/////
       } else {
         response.render('pages/error');
 
       }
-      /////////////////////
+    
     });
 }
 
@@ -126,11 +125,30 @@ function postSearch(request, response){
     .catch(error => {
       console.log(error);
       response.render('pages/error');
-      //response.render('pages/error', {error: error});
     });
 }
 
 
+//add  book to database from search form
+function postBook(request, response){
+  
+  const SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+  const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
+
+  return client.query(SQL, values)
+    .then(res=>{
+      if(res.rowCount >0){
+        response.redirect(`/books/${res.rows[0].id}`);
+      }
+
+    })
+    .catch(errorHandle);
+
+}
+
+function errorHandle(error, response){
+  response.redirect('pages/error', {error: error});
+}
 
 
 
