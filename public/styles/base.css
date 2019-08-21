@@ -2,4 +2,9 @@ body {
     background-color:rgb(155, 155, 155);
     text-align: center;
 }
-
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: white;
+}

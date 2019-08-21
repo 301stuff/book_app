@@ -64,7 +64,8 @@ function Book(data) {
   this.author = (data.authors) ? data.authors : 'No Author found';
 
   this.description = (data.description) ? data.description : 'No description';
-  this.image = (data.imageLinks) ? data.imageLinks.thumbnail.replace(/^http:/, 'https:') : './public/styles/book-icon-139.png';
+  this.image_url = (data.imageLinks) ? data.imageLinks.thumbnail.replace(/^http:/, 'https:') : './public/styles/book-icon-139.png';
+  this.isbn = (data.industryIdentifiers) ? data.industryIdentifiers[0].identifier : 'No ISBN';
 }
 
 //=======================================================================================================//
@@ -81,6 +82,7 @@ function getBooks(request, response){
       if(result.rowCount > 0 ) {
         // console.log("results:", result);
         response.render('pages/index', {booksDb: result.rows});
+        
 
       }
     });
@@ -96,7 +98,7 @@ function getBookDetails(request, response){
   client.query(SQL, [id])
     .then(res=> {
       if(res.rowCount > 0) {
-        response.render('./pages/books/detail', {bookDetail: res.rows});
+        response.render('./pages/books/showBook', {bookDetail: res.rows});
         ///////////////// added/////
       } else {
         response.render('pages/error');
@@ -117,7 +119,7 @@ function postSearch(request, response){
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => {
 
-      response.render('pages/searches/show', {searchResults: results});
+      response.render('pages/searches/showSearchResults', {searchResults: results});
 
     })
 

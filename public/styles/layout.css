@@ -10,9 +10,9 @@ header{
 }
 main{
     position: absolute;
-    top:14%;
+    top:12%;
     width: 100%;
-    margin-bottom: 14%;
+    margin-bottom: 10%;
 }
 nav{
     color: white;
@@ -42,9 +42,11 @@ h2{
     color: white;
 }
 
-h2 ul li{
+
+
+.savedBooks ul li, .bookDetail ul li, .searchResults ul li{
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .searchPg {
     background-color:rgb(216, 216, 216); 
@@ -56,17 +58,17 @@ h2 ul li{
     padding:auto 0px;
     line-height: 4em;
 }
-form :first-child{
+.searchForm :first-child{
     background-color: white;
     margin-top: 3%;
     height: 4em;
 }
 
-form :first-child label{
+.searchForm form :first-child label{
    padding-left: 3em;
 }
 
-form{
+.searchForm{
     display:flex;
     align-items: center;
     flex-direction: column;
@@ -98,4 +100,50 @@ footer ul{
     align-content: center;
 height: 50%;
     margin-top:4% ;
+}
+
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block; 
+    
+  }
+  
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 100%;
+    background-color: rgba(19, 18, 18, 0.836);
+    color: white;
+    width: 200px;
+    height: 70px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdownContent {
+    display:block;
+  }
+  .dropdownContent a:hover {
+    color: red;
+  }
+
+
+
+  /* hiding description, isbn for index page */
+  .savedBooks li .description, .savedBooks li .isbn, .savedBooks li .bookshelf  {
+      display:none;
+  }
+
+.searchResults li .bookshelf{
+    display:none;
+}
+
+  /* hiding form in searchREsults page */
+  .hidden{
+    display: none;
 }
