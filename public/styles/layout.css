@@ -110,8 +110,11 @@ height: 50%;
     display: inline-block; 
     
   }
+
+
+
   
-  .dropdownContent {
+  /* .dropdownContent {
     display: none;
     position: absolute;
     right: 5%;
@@ -130,7 +133,43 @@ height: 50%;
   }
   .dropdownContent a:hover {
     color: red;
-  }
+  } */
+
+.overlay {
+  position: fixed;
+  top: 3%;
+  bottom: 80%;
+  left: 0;
+  right: 0%;
+ padding-right: 7%;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9;
+}
+.overlay li{
+    padding-right: 15px;
+}
+
+.overlay li a:hover {
+    color: red;
+}
+
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.close i{
+    position: absolute;
+    top:6%;
+    
+  right: 3.9%;
+  
+}
+
 
 
 

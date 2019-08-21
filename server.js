@@ -125,6 +125,7 @@ function postSearch(request, response){
     .catch(error => {
       console.log(error);
       response.render('pages/error');
+      
     });
 }
 
@@ -133,7 +134,7 @@ function postSearch(request, response){
 function postBook(request, response){
   
   const SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
-  const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
+  const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], `../../../${request.body.addBooks[5]}`, request.body.addBooks[2], request.body.addBooks[4]];
 
   return client.query(SQL, values)
     .then(res=>{
