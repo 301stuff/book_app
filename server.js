@@ -1,6 +1,7 @@
 'use strict';
 
 //=====================Global Variables and appplication dependensies=================================//
+let bookshelves = [];
 
 const express = require('express');
 const app = express();
@@ -31,6 +32,17 @@ const PORT = process.env.PORT || 3000;
 // tell our express server to start listening on port PORT
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
+const methodOverride = require('method-override');
+
+//method override allows us to put or delete forms
+app.use(methodOverride((request, response)=> {
+  if(request.body && (typeof request.body === 'object') && ('_method' in request.body)){
+    let method = request.body._method;
+    delete request.body._method;
+    return method;
+  }
+}));
+
 //=======================================================================================//
 
 
@@ -59,7 +71,8 @@ app.get('*', (request, response)=>{
   response.render('pages/error');
 });
 
-
+app.delete('/books/:id', deleteBook);
+app.put('/books/:id', updateBook);
 //=======================================Constructor Functions==============================================//
 //book constructor
 function Book(data) {
@@ -93,19 +106,27 @@ function getBooks(request, response){
 //get details about single book
 function getBookDetails(request, response){
   let id = request.params.id;
-  console.log('id: ', id);
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   client.query(SQL, [id])
     .then(res=> {
       if(res.rowCount > 0) {
         response.render('./pages/books/showBook', {bookDetail: res.rows});
-      } else {
-        response.render('pages/error');
+      } 
+
+      else {
+        errorHandle(request, response);
 
       }
-
+    })
+    
+    .catch(error => {
+      errorHandle(error, response);
     });
+  
 }
+
+    
+
 
 //search google books api
 function postSearch(request, response){
@@ -123,10 +144,10 @@ function postSearch(request, response){
     })
 
     .catch(error => {
-      console.log(error);
-      response.render('pages/error');
-
+      errorHandle(error, response);
     });
+
+    
 }
 
 
@@ -137,21 +158,71 @@ function postBook(request, response){
   const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
 
   return client.query(SQL, values)
+    .then (addShelf())
     .then(res=>{
       if(res.rowCount >0){
+        console.log(bookshelves);
         response.redirect(`/books/${res.rows[0].id}`);
       }
 
     })
-    .catch(errorHandle);
-
+    .catch(error => {
+      errorHandle(error, response);
+    });
 }
+
+function deleteBook(request, response){
+  let SQL = `DELETE FROM books WHERE id=$1;`;
+  let id = request.params.id;
+
+  return client.query(SQL, [id])
+    .then( response.redirect('/'))
+    .catch(error => {
+      errorHandle(error, response);
+    });
+}
+
+function updateBook(request, response){
+  
+  // let {title, author, description, isbn, bookshelf, image_url, id} = request.body; 
+ 
+  
+
+  let SQL = `UPDATE books SET title=$1, author=$2, description=$3, isbn=$4, bookshelf=$5, image_url=$6 WHERE id=$7;`;
+
+  // let values = [title, author, description, isbn, bookshelf, image_url, id];
+
+ 
+  const values = [request.body.addBooks[0], request.body.addBooks[1], request.body.addBooks[2], request.body.addBooks[3], request.body.addBooks[4], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5],   request.params.id]; 
+
+  client.query(SQL, values)
+    .then(update => {
+      
+      if(update.rowCount > 0) {
+        return response.redirect(`/books/${request.params.id}`);
+      }
+    })
+    .catch(error => {
+      errorHandle(error, response);
+    });
+}
+
+
 
 function errorHandle(error, response){
-  response.redirect('pages/error', {error: error});
+  response.render('pages/error');
+
 }
 
 
 
+//function to list all bookshelves
 
+function addShelf(){
+  let SQL = `SELECT DISTINCT bookshelf from books;`;
+  client.query(SQL)
+    .then(result=>{
+      bookshelves.push(result);
+    });
+}
 
