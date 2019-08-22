@@ -15,8 +15,19 @@
             <% bookDetail.forEach(item => { %>
              <li>
                 <% include ./detail %> 
+
+                <button class="viewDetailsButton" name="<%= item.id %>" >Update</button>
+                <div  class="DetailFormDiv hidden">
+                
+                        <form class="DetailForm" action="/books/<%= item.id %>" method="POST">
+                            <input type="hidden" name="_method" value="put">
+                            <input type="hidden" name="id" value="<%= item.id %>">
+                <% include ./edit %>
+                        </form>
+                    </div>
             </li>
-            <!-- <button class="viewdetails">View Details</button> -->
+            
+            
             <% }) %>
         
         </ul>
