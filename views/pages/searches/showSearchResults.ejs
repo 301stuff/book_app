@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../../layout/head %>
+</head>
+<body>
+    <header>
+        <% include ../../layout/header %>
+    </header>
+   <main class = "searchResults"> 
+       
+      <h2> Search Results</h2>    
+        <ul>
+            
+            <% searchResults.forEach(item => { %>
+            <li>
+                <% include ../books/detail %>
+            </li>
+            <button class="viewDetailsButton" name="<%= item.id %>" >Select</button>
+            <div  class="DetailFormDiv hidden">
+                
+                <form class="DetailForm" action="/books" method="POST">
+                    <label>Title:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.title %>" required>
+                    </label>
+                    <label> Author:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.author %>" required>
+                    </label>
+                    <label>Description:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.description %>" required>
+                    </label>
+                    <label>ISBN:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.isbn %>" required>
+                    </label>
+                    <label>Bookshelf:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.bookshelf %>" required>
+                    </label>
+                    <label>Image URL:
+                        <input class="DetailForm" type="text" name="addBooks" value="<%= item.image_url %>" required>
+                    </label>
+                    <button>Save to Database</button>
+                </form>
+            </div>
+            <% }) %>
+        </ul>
+    </main>  
+    <footer>
+        <% include ../../layout/footer %>
+    </footer>
+</body>
+</html>

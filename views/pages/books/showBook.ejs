@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <% include ../../layout/head %>
+</head>
+<body>
+    <header>
+            <% include ../../layout/header %>
+    </header>
+  
+    <main class="bookDetail">  
+       
+        <ul>
+           
+            <% bookDetail.forEach(item => { %>
+             <li>
+                <% include ./detail %> 
+            </li>
+            <!-- <button class="viewdetails">View Details</button> -->
+            <% }) %>
+        
+        </ul>
+    </main> 
+     
+    <footer>
+            <% include ../../layout/footer %>
+    </footer>
+</body>
+</html>
