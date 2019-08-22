@@ -1,3 +1,5 @@
+/*=================================== Header ============================ */
+
 header{
     display: flex;
     flex-direction: row;
@@ -6,24 +8,9 @@ header{
     position:fixed;
     top:0;
     z-index: 10;
-   
-}
-main{
-    position: absolute;
-    top:12%;
-    width: 100%;
-    margin-bottom: 10%;
-}
-nav{
-    color: white;
-    background-color: black;
-    padding-top: 1em;
-    font-size: 1.5em;
-    text-align: right;
-    padding-right: 4%;
-    width: 50%;
 }
 
+/* Best Books! */
 h1{
     background-color: black;
     color: white;
@@ -34,6 +21,29 @@ h1{
     text-align: left;
     padding-left: 4%;
 }
+
+/* Nav Hamburger drop-down menu */
+nav{
+    color: white;
+    background-color: black;
+    padding-top: 1em;
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 4%;
+    width: 50%;
+}
+
+/*=======================================================================================*/
+
+/*=================================  Main  =================================================*/
+
+main{
+    position: absolute;
+    top:12%;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
 h2{
     background-color: rgb(74, 74, 74);
     width: 100%;
@@ -42,46 +52,15 @@ h2{
     color: white;
 }
 
-
-
+/* layout for dispalying book info from partials */
 .savedBooks ul li, .bookDetail ul li, .searchResults ul li{
     margin-top: 30px;
     margin-bottom: 20px;
 }
-.searchPg {
-    background-color:rgb(216, 216, 216); 
-    width:85%;
-    margin: 0% 5% 2% 5%;
-    border-width: 0px;
-    border-radius: 3px;
-    /* height: 4em; */
-    padding:auto 0px;
-    line-height: 4em;
-}
-.searchForm :first-child{
-    background-color: white;
-    margin-top: 3%;
-    height: 4em;
-}
 
-.searchForm form :first-child label{
-   padding-left: 3em;
-}
+/*=======================================================================================*/
 
-.searchForm{
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-button .searchButton{
-    background-color: black;
-    color:white;
-    border-color: black;
-    width: 85%;
-    height: 4em;
-    font-size:1em;
-}
+/*===================================== Footer ===========================================*/
 
 footer{
     position:fixed;
@@ -102,82 +81,15 @@ height: 50%;
     margin-top:4% ;
 }
 
+/*=======================================================================================*/
 
-
-
-.dropdown {
-    position: relative;
-    display: inline-block; 
-    
-  }
-
-
-
-  
-  /* .dropdownContent {
-    display: none;
-    position: absolute;
-    right: 5%;
-    top: 100%;
-    background-color: rgba(19, 18, 18, 0.836);
-    color: white;
-    width: 200px;
-    height: 70px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-  }
-  
-  .dropdown:hover .dropdownContent {
-    display:block;
-  }
-  .dropdownContent a:hover {
-    color: red;
-  } */
-
-.overlay {
-  position: fixed;
-  top: 3%;
-  bottom: 80%;
-  left: 0;
-  right: 0%;
- padding-right: 7%;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-  z-index: 9;
-}
-.overlay li{
-    padding-right: 15px;
-}
-
-.overlay li a:hover {
-    color: red;
-}
-
-
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.close i{
-    position: absolute;
-    top:6%;
-    
-  right: 3.9%;
-  
-}
-
-
-
-
+/*=========================================== HIDE ==================================*/
   /* hiding description, isbn for index page */
   .savedBooks li .description, .savedBooks li .isbn, .savedBooks li .bookshelf  {
       display:none;
   }
 
+  /* hiding bookshelf on showSearchResults page because we dont-have any bookshelf */
 .searchResults li .bookshelf{
     display:none;
 }
@@ -186,3 +98,5 @@ height: 50%;
   .hidden{
     display: none;
 }
+
+/*========================================================================================*/

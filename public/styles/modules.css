@@ -1,0 +1,106 @@
+
+/*============================= PopUp Hamburger Menu =====================================*/
+
+.dropdown {
+    position: relative;
+    display: inline-block; 
+}
+
+.overlay {
+  position: fixed;
+  top: 3%;
+  bottom: 80%;
+  left: 0;
+  right: 0%;
+ padding-right: 7%;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9;
+}
+
+.overlay li{
+    padding-right: 15px;
+}
+
+.overlay li a:hover {
+    color: red;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.close i{
+    position: absolute;
+    top:6%;
+    
+  right: 3.9%; 
+}
+
+/*=======================================================================================*/
+
+/*================= Styles for the SearchForm from searches/new.ejs page ================*/
+.searchPg {
+    background-color:rgb(216, 216, 216); 
+    width:85%;
+    margin: 0% 5% 2% 5%;
+    border-width: 0px;
+    border-radius: 3px;
+    /* height: 4em; */
+    padding:auto 0px;
+    line-height: 4em;
+}
+.searchForm :first-child{
+    background-color: white;
+    margin-top: 3%;
+    height: 4em;
+}
+
+.searchForm form :first-child label{
+   padding-left: 3em;
+}
+
+.searchForm{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button .searchButton{
+    background-color: black;
+    color:white;
+    border-color: black;
+    width: 85%;
+    height: 4em;
+    font-size:1em;
+}
+/*=======================================================================================*/
+
+
+/*============ Style for the DetailForm from searches/showSearchResults.ejs page ========*/
+
+.DetailForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.DetailForm label{
+    margin-top:20px;
+}
+.DetailForm input{
+    width: 300px;
+    height: 40px;
+    box-shadow: 4px 3px 3px rgb(59, 59, 59);
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+
+/*=======================================================================================*/
+
+
+
