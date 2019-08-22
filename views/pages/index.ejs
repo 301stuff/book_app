@@ -16,7 +16,8 @@
                 <p>Title: <%= item.title %></p>
                 <p>Author: <%= item.author %></p>
                 <!-- <p class="descpription">Description: <%= item.description %></p> -->
-                <button class="viewdetails" name="<%= item.id %>">View Details</button>
+                <a href="/books/<%= item.id %>"><button class="viewdetails" name="<%= item.id %>">View Details</button></a>
+
             <% }) %>
         </ul>
     </main>  

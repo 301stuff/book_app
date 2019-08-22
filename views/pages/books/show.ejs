@@ -12,9 +12,11 @@
         <ul>
             <% bookDetail.forEach(item => { %>
               <%- include ../books/detail %>
+              <%- include ../books/edit %>
+
+            </ul>
             <% }) %>
-        </ul>
-    </main>  
+          </main>  
     <footer>
 <%- include('../../layout/footer') %>
     </footer>

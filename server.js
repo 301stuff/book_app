@@ -16,7 +16,6 @@ client.connect();
 client.on('error', err => console.error(err));
 
 
-
 const PORT = process.env.PORT || 3000;
 
 
@@ -28,6 +27,17 @@ app.use(express.static('./public/../'));
 app.use(express.urlencoded({extended:true}));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+const methodOverride = require('method-override');
+//method overide allows us to put and delete on forms
+app.use(methodOverride((request, response) => {
+  if(request.body && typeof request.body === 'object' && '_method' in request.body){
+    let method = request.body._method;
+    delete request.body._method;
+    return method;
+  }
+}));
+
 
 //search database for new books goes to
 app.get('/search',(request, response)=>{
@@ -44,6 +54,8 @@ app.get('*', (request, response)=>{
   response.render('pages/error');
 });
 
+
+
 //function to gather info from database and display specific book info. Called on line 39
 function getBookDetails(request, response){
   // requset.params.id comes from /books/:id
@@ -51,10 +63,12 @@ function getBookDetails(request, response){
   let id = request.params.id;
   // console.log('id: ', id);
   let SQL = `SELECT * FROM books WHERE id=$1;`;
+  let bookshelfs = `SELECT bookshelf FROM books;`;
   client.query(SQL, [id])
     .then(res=> {
       if(res.rowCount > 0) {
-        response.render('pages/books/show', {bookDetail: res.rows});
+        response.render('pages/books/show', {bookDetail: res.rows, bookshelfs});
+        //add select dropdown
       }
     })
     .catch(error => {
@@ -64,10 +78,8 @@ function getBookDetails(request, response){
     });
 }
 
-//Error page
-app.get('/error', (request, response)=>{
-  response.render('pages/error');
-});
+
+
 
 //gets books from the database called on line 37
 function getBooks(request, response){
@@ -80,6 +92,8 @@ function getBooks(request, response){
         // console.log("results:", result);
         response.render('pages/index', {booksDb: result.rows});
 
+      } else {
+        response.render('pages/searches/new');
       }
     })
     .catch(error => {
@@ -101,11 +115,7 @@ app.post('/search', (request, response)=>{
       response.render('pages/searches/show', {searchResults: results});
     }
     )
-    .catch(error => {
-      console.log(error);
-      response.render('pages/error');
-      //response.render('pages/error', {error: error});
-    });
+    .catch(errorHandle);
 });
 
 //add to database from search form
@@ -119,12 +129,36 @@ app.post('/books', (request, response)=>{
       if(res.rowCount >0){
         response.redirect(`/books/${res.rows[0].id}`);
       }
-      
+
     })
     .catch(errorHandle);
 
 });
 
+//updated book in database
+app.put('/books/:id', (request, response)=>{
+  let id = request.params.id;
+  // console.log('id: ', id);
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
+
+});
+
+//delete book in database
+app.delete('/tasks/:id', deleteTask);
+
+//delete function
+function deleteTask(request, response) {
+  let id = request.params.id;
+  let SQL = 'DELETE FROM books WHERE id=$1;';
+  
+  let values = [request.body];
+  return client.query(SQL, [id])
+    .then( response.redirect('/'))
+    .catch(errorHandle);
+}
+
+
+//error handle function
 function errorHandle(error, response){
   response.redirect('pages/error', {error: error});
 }

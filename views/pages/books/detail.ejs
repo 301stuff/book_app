@@ -5,5 +5,11 @@
                 <p class="descpription">Description: <%= item.description %></p>
                 <p> ISBN: <%=item.isbn %></p>
                 <p> Bookshelf: <%= item.bookshelf %></p>
+
+                <form action="/books/<%= item.id %>" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="id" value="<%= item.id %>">
+                <button>Fahrenheit 451</button>
+                </form>
                 </div>
 

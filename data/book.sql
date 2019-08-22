@@ -10,6 +10,6 @@ description TEXT,
 bookshelf VARCHAR(255)
 );
 
-INSERT INTO books (author, title, isbn, image, description, bookshelf)
-VALUES ('test author1', 'test title1', 'test isbn1', 'test image_url1', 'test description1', 'test bookshelf1'),
-('test author2', 'test title2', 'test isbn2', 'test image_url2', 'test description2', 'test bookshelf2');
+-- INSERT INTO books (author, title, isbn, image, description, bookshelf)
+-- VALUES ('test author1', 'test title1', 'test isbn1', 'test', 'test description1', 'test bookshelf1'),
+-- ('test author2', 'test title2', 'test isbn2', 'test image', 'test description2', 'test bookshelf2');
