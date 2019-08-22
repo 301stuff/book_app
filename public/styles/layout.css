@@ -1,3 +1,11 @@
+.hidden{
+    display: none;
+}
+
+
+
+
+/*  
 header{
     display: flex;
     flex-direction: row;
@@ -5,9 +13,9 @@ header{
     justify-content: space-between;
     position:fixed;
     top:0;
-    z-index: 10;
-   
+    z-index: 10; 
 }
+
 main{
     position: absolute;
     top:14%;
@@ -47,7 +55,7 @@ h2{
     margin: 0% 5% 2% 5%;
     border-width: 0px;
     border-radius: 3px;
-    /* height: 4em; */
+    height: 4em;
     padding:auto 0px;
     line-height: 4em;
 }
@@ -79,8 +87,8 @@ button .searchButton{
 footer{
     position:fixed;
    bottom: 0%;
-    /* left:47%; */
-    width: 100%;
+     left:47%; 
+     width: 100%;
     background-color: black;
    
 }
@@ -93,3 +101,5 @@ footer ul{
 height: 50%;
     margin-top:4% ;
 }
+ */
+

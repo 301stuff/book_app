@@ -1,0 +1,29 @@
+<button class="viewDetailsButton" name="<%= item.id %>" >Select</button>
+<div  class="DetailFormDiv hidden">
+  <form class="DetailForm" action="/books/<%= item.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="id" value="<%= item.id%>">
+    <label>Title:
+      <input class="DetailForm" type="text" name="addBooks" value="<%= item.title %>" required>
+    </label>
+    <label> Author:
+      <input class="DetailForm" type="text" name="addBooks" value="<%= item.author %>" required>
+    </label>
+    <label>Description:
+      <input class="DetailForm" type="text" name="addBooks" value="<%= item.description %>" required>
+    </label>
+    <label>ISBN:
+      <input class="DetailForm" type="text" name="addBooks" value="<%= item.isbn %>" required>
+    </label>
+    <label>Image URL:
+      <input class="DetailForm" type="text" name="addBooks" value="<%= item.image %>">
+    </label>
+          <label>Bookshelf:
+            <select name="addBooks" id="">
+              
+            </select>
+            <input class="DetailForm" type="" name="addBooks" value="<%= item.bookshelf %>" required>
+          </label>
+    <button>Update Database</button>
+  </form>
+</div>

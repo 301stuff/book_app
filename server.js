@@ -9,12 +9,11 @@ app.use(cors());
 const superagent = require('superagent');
 require('dotenv').config();
 
-//DAtabase
+//Database
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.error(err));
-
 
 
 const PORT = process.env.PORT || 3000;
@@ -24,40 +23,65 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.static('./public/../'));
 
-//this what returns data fro our form as json object.
+//this what returns data from our form as json object.
 app.use(express.urlencoded({extended:true}));
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
+const methodOverride = require('method-override');
+//method overide allows us to put and delete on forms
+app.use(methodOverride((request, response) => {
+  if(request.body && typeof request.body === 'object' && '_method' in request.body){
+    let method = request.body._method;
+    delete request.body._method;
+    return method;
+  }
+}));
+
+
+//search database for new books goes to
 app.get('/search',(request, response)=>{
   response.render('pages/searches/new');
 });
 
 //initial page
 app.get('/', getBooks);
+//get specific book info
 app.get('/books/:id', getBookDetails);
 
-
-function getBookDetails(request, response){
-  // requset.params.id comes from /books/:id
-  // let id = request.params.id ? request.params.id : request.body.id 
-  let id = request.params.id;
-  console.log('id: ', id)
-  let SQL = 'SELECT * FROM books WHERE id=$1;';
-  client.query(SQL, [id])
-    .then(res=> {
-      if(res.rowCount > 0) {
-        response.render('./pages/books/detail', {bookDetail: res.rows});
-      }
-    });
-}
-
-//Error page
-app.get('/error', (request, response)=>{
+//bad request error handle
+app.get('*', (request, response)=>{
   response.render('pages/error');
 });
 
-//gets books from the database
+
+
+//function to gather info from database and display specific book info. Called on line 39
+function getBookDetails(request, response){
+  // requset.params.id comes from /books/:id
+  // let id = request.params.id ? request.params.id : request.body.id
+  let id = request.params.id;
+  // console.log('id: ', id);
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
+  let bookshelfs = `SELECT bookshelf FROM books;`;
+  client.query(SQL, [id])
+    .then(res=> {
+      if(res.rowCount > 0) {
+        response.render('pages/books/show', {bookDetail: res.rows, bookshelfs});
+        //add select dropdown
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      response.render('pages/error');
+      //response.render('pages/error', {error: error});
+    });
+}
+
+
+
+
+//gets books from the database called on line 37
 function getBooks(request, response){
   let SQL = `SELECT * FROM books`;
   return client.query(SQL)
@@ -67,8 +91,15 @@ function getBooks(request, response){
       if(result.rowCount > 0 ) {
         // console.log("results:", result);
         response.render('pages/index', {booksDb: result.rows});
-        
+
+      } else {
+        response.render('pages/searches/new');
       }
+    })
+    .catch(error => {
+      console.log(error);
+      response.render('pages/error');
+      //response.render('pages/error', {error: error});
     });
 }
 
@@ -79,31 +110,71 @@ app.post('/search', (request, response)=>{
   if(request.body.search[1] === 'title') {url += `intitle:${request.body.search[0]}&maxResults=10`;}
   // console.log('search', url);
   superagent.get(url)
-
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => {
-    
       response.render('pages/searches/show', {searchResults: results});
-      
     }
     )
-  
-    .catch(error => {
-      console.log(error);
-      response.render('pages/error');
-      //response.render('pages/error', {error: error});
-    });
+    .catch(errorHandle);
+});
+
+//add to database from search form
+app.post('/books', (request, response)=>{
+  // console.log(request);
+  const SQL = `INSERT INTO books(author, title, isbn, image, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+  const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
+
+  return client.query(SQL, values)
+    .then(res=>{
+      if(res.rowCount >0){
+        response.redirect(`/books/${res.rows[0].id}`);
+      }
+
+    })
+    .catch(errorHandle);
 
 });
+
+//updated book in database
+app.put('/books/:id', (request, response)=>{
+  let id = request.params.id;
+  // console.log('id: ', id);
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
+
+});
+
+//delete book in database
+app.delete('/tasks/:id', deleteTask);
+
+//delete function
+function deleteTask(request, response) {
+  let id = request.params.id;
+  let SQL = 'DELETE FROM books WHERE id=$1;';
+  
+  let values = [request.body];
+  return client.query(SQL, [id])
+    .then( response.redirect('/'))
+    .catch(errorHandle);
+}
+
+
+//error handle function
+function errorHandle(error, response){
+  response.redirect('pages/error', {error: error});
+}
+
+
 //book constructor
 function Book(data) {
   this.title = (data.title) ? data.title : 'No title found';
-  // this.image = data.imageLinks.thumbnail.replace(/^http:/, 'https:'));
   this.author = (data.authors) ? data.authors : 'No Author found';
- 
   this.description = (data.description) ? data.description : 'No description';
   this.image = (data.imageLinks) ? data.imageLinks.thumbnail.replace(/^http:/, 'https:') : './public/styles/book-icon-139.png';
+  this.isbn = (data.industryIdentifiers) ? `ISBN_13${data.industryIdentifiers[0].identifier}` : 'No ISBN found';
 }
+
+
+
 
 
 
