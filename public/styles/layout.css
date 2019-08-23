@@ -39,7 +39,7 @@ nav{
 
 main{
     position: absolute;
-    top:12%;
+    top:11%;
     width: 100%;
     margin-bottom: 10%;
 }
@@ -99,4 +99,11 @@ height: 50%;
     display: none;
 }
 
+.savedBooks .delete{
+    display: none;
+}
+
+.searchResults .delete{
+    display: none;
+}
 /*========================================================================================*/

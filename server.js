@@ -219,7 +219,7 @@ function errorHandle(error, response){
 //function to list all bookshelves
 
 function addShelf(){
-  let SQL = `SELECT DISTINCT bookshelf from books;`;
+  let SQL = `SELECT DISTINCT bookshelf FROM books;`;
   client.query(SQL)
     .then(result=>{
       bookshelves.push(result);
