@@ -1,7 +1,7 @@
 'use strict';
 
 //=====================Global Variables and appplication dependensies=================================//
-let bookshelves = [];
+
 
 const express = require('express');
 const app = express();
@@ -92,6 +92,7 @@ function Book(data) {
 //gets books from the database
 function getBooks(request, response){
   let SQL = `SELECT * FROM books`;
+
   return client.query(SQL)
 
     .then(result => {
@@ -107,25 +108,28 @@ function getBooks(request, response){
 function getBookDetails(request, response){
   let id = request.params.id;
   let SQL = 'SELECT * FROM books WHERE id=$1;';
+  let bookshelves = addShelf();
+
   client.query(SQL, [id])
     .then(res=> {
       if(res.rowCount > 0) {
-        response.render('./pages/books/showBook', {bookDetail: res.rows});
-      } 
+        // console.log(bookshelves);
+        response.render('./pages/books/showBook', {bookDetail: res.rows, bookshelves: bookshelves});
+      }
 
       else {
         errorHandle(request, response);
 
       }
     })
-    
+
     .catch(error => {
       errorHandle(error, response);
     });
-  
+
 }
 
-    
+
 
 
 //search google books api
@@ -147,7 +151,7 @@ function postSearch(request, response){
       errorHandle(error, response);
     });
 
-    
+
 }
 
 
@@ -158,10 +162,8 @@ function postBook(request, response){
   const values = [request.body.addBooks[1], request.body.addBooks[0], request.body.addBooks[3], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5], request.body.addBooks[2], request.body.addBooks[4]];
 
   return client.query(SQL, values)
-    .then (addShelf())
     .then(res=>{
       if(res.rowCount >0){
-        console.log(bookshelves);
         response.redirect(`/books/${res.rows[0].id}`);
       }
 
@@ -183,21 +185,21 @@ function deleteBook(request, response){
 }
 
 function updateBook(request, response){
-  
-  // let {title, author, description, isbn, bookshelf, image_url, id} = request.body; 
- 
-  
+
+  // let {title, author, description, isbn, bookshelf, image_url, id} = request.body;
+console.log('user form data', request.body.addBooks);
+
 
   let SQL = `UPDATE books SET title=$1, author=$2, description=$3, isbn=$4, bookshelf=$5, image_url=$6 WHERE id=$7;`;
 
   // let values = [title, author, description, isbn, bookshelf, image_url, id];
 
- 
-  const values = [request.body.addBooks[0], request.body.addBooks[1], request.body.addBooks[2], request.body.addBooks[3], request.body.addBooks[4], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5],   request.params.id]; 
+
+  const values = [request.body.addBooks[0], request.body.addBooks[1], request.body.addBooks[2], request.body.addBooks[3], request.body.addBooks[6], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5], request.params.id];
 
   client.query(SQL, values)
     .then(update => {
-      
+
       if(update.rowCount > 0) {
         return response.redirect(`/books/${request.params.id}`);
       }
@@ -220,9 +222,13 @@ function errorHandle(error, response){
 
 function addShelf(){
   let SQL = `SELECT DISTINCT bookshelf FROM books;`;
+  let bookArray = [];
   client.query(SQL)
     .then(result=>{
-      bookshelves.push(result);
+      result.rows.forEach(element =>{
+        bookArray.push(element);
+      });
     });
+  return bookArray;
 }
 
