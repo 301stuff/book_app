@@ -1,6 +1,7 @@
 /*=================================== Header ============================ */
 
 header{
+    background-color: rgba(53, 51, 50);
     display: flex;
     flex-direction: row;
     width:100%;
@@ -12,7 +13,7 @@ header{
 
 /* Best Books! */
 h1{
-    background-color: black;
+    background-color: rgba(53, 51, 50);
     color: white;
     width: 50%;
     height: 3em;
@@ -24,8 +25,8 @@ h1{
 
 /* Nav Hamburger drop-down menu */
 nav{
+    background-color: rgba(53, 51, 50);
     color: white;
-    background-color: black;
     padding-top: 1em;
     font-size: 1.5em;
     text-align: right;
@@ -45,7 +46,8 @@ main{
 }
 
 h2{
-    background-color: rgb(74, 74, 74);
+    background-color: rgba(53, 51, 50, 0.774);
+    position: fixed;
     width: 100%;
     height:2.5em;
     line-height:2.5em;
@@ -54,20 +56,31 @@ h2{
 
 /* layout for dispalying book info from partials */
 .savedBooks ul li, .bookDetail ul li, .searchResults ul li{
-    margin-top: 30px;
+    margin: auto;
+    margin-top: 50px;
     margin-bottom: 20px;
+    width: 50%;
+    background-color: rgba(201, 187, 186, 0.877);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgb(113, 70, 67);
+
 }
+
+
 
 /*=======================================================================================*/
 
 /*===================================== Footer ===========================================*/
 
 footer{
+    background-color: rgba(53, 51, 50);
+
     position:fixed;
    bottom: 0%;
     /* left:47%; */
     width: 100%;
-    background-color: black;
+    /* background-color: black; */
     margin-top: 50px;
    
 }
@@ -85,8 +98,9 @@ height: 50%;
 
 /*=========================================== HIDE ==================================*/
   /* hiding description, isbn for index page */
-  .savedBooks li .description, .savedBooks li .isbn, .savedBooks li .bookshelf  {
+  .savedBooks li .description, .savedBooks li .isbn, .savedBooks li .bookshelf, {
       display:none;
+      /* background-color: transparent; */
   }
 
   /* hiding bookshelf on showSearchResults page because we dont-have any bookshelf */
@@ -102,7 +116,9 @@ height: 50%;
 .savedBooks .delete{
     display: none;
 }
-
+.bookDetail .textBookshelf {
+    display: none;
+}
 .searchResults .delete{
     display: none;
 }

@@ -1,10 +1,23 @@
 body {
-    background-color:rgb(155, 155, 155);
+    /* background-color:rgb(155, 155, 155); */
     text-align: center;
+    height: 100%;
+    background-image: url("../styles/images/multicolorTileBackground.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/* background image  */
+.bg {
 }
 a{
     text-decoration: none;
 }
 a:visited{
     color: white;
+}
+
+strong{
+    font-size: 15px;
+    font-weight: bold;
 }
