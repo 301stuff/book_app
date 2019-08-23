@@ -1,17 +1,16 @@
 
-<li>
     <img src="<%= item.image_url %>" alt="book cover image">
-    <p>Title: <%= item.title %></p>
-    <p>Author: <%= item.author %></p>
-    <p class="description">Description: <%= item.description %></p>
-    <p class="isbn"> ISBN: <%=item.isbn %></p>
-    <p class="bookshelf"> Bookshelf: <%= item.bookshelf %></p>
+    <p><strong>Title:</strong> <%= item.title %></p>
+    <p><strong>Author:</strong><%= item.author %></p>
+    <p class="description"><strong>Description:</strong><%= item.description %></p>
+    <p class="isbn"> <strong>ISBN:</strong> <%=item.isbn %></p>
+    <p class="bookshelf"> <strong>Bookshelf:</strong> <%= item.bookshelf %></p>
 
     <form action="/books/<%= item.id %>" method="POST">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="id" value="<%= item.id %>">
         <button class = "delete">Delete</button>
     </form>
-</li>
+
 
 

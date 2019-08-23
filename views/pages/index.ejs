@@ -4,27 +4,28 @@
     <% include ../layout/head %>
 </head>
 <body>
-    <header>
+    <div class="bg">
+        <header>
             <% include ../layout/header %>
-    </header>
-   <main class = "savedBooks">  
-        <h2>Saved books <%=  booksDb.length %></h2>   
-        <ul>
-            <% booksDb.forEach(item => { %>
-            <li>
-                <% include books/detail %>  
-            </li>
-            <form action = "books/<%=item.id %>">
-                <button class="viewdetails" name="<%= item.id %>">View Details</button>
-            </form>
-            <% }) %>
+        </header>
+        <main class = "savedBooks">  
+            <h2>Saved books <%=  booksDb.length %></h2>   
+            <ul>
+                <% booksDb.forEach(item => { %>
+                    <li>
+                        <% include books/detail %>  
+                    </li>
+                    <form action = "books/<%=item.id %>">
+                        <button class="viewdetails" name="<%= item.id %>">View Details</button>
+                    </form>
+                    <% }) %>
+                    
+                </ul>
+            </main>  
             
-        </ul>
-    </main>  
-
-    <footer>
-            <% include ../layout/footer %>
-    </footer>
-
+            <footer>
+                <% include ../layout/footer %>
+            </footer>
+    </div>
 </body>
 </html>

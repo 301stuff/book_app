@@ -4,6 +4,7 @@
         <% include ../../layout/head %>
 </head>
 <body>
+    <div class="bg">
     <header>
             <% include ../../layout/header %>
     </header>
@@ -23,16 +24,19 @@
                             <input type="hidden" name="_method" value="put">
                             <input type="hidden" name="id" value="<%= item.id %>">
                 <% include ./edit %>
-                <select class="dropdownBookshelf" name="addBooks">
-                                <option value="<%= item.bookshelf %>" selected= 'selected'><%= item.bookshelf %></option>
-                                <% bookshelves.forEach(shelves=>{  %>
-                                 <%   if(shelves.bookshelf !== item.bookshelf){ %>
-                                    <option value="<%= shelves.bookshelf %>"><%= shelves.bookshelf %></option>
-                                    
-                                    <% } %>
-                
-                                    <% }) %>
+                <label>
+
+                    <select class="dropdownBookshelf" name="addBooks">
+                        <option value="<%= item.bookshelf %>" selected= 'selected'><%= item.bookshelf %></option>
+                        <% bookshelves.forEach(shelves=>{  %>
+                            <%   if(shelves.bookshelf !== item.bookshelf){ %>
+                                <option value="<%= shelves.bookshelf %>"><%= shelves.bookshelf %></option>
+                                
+                                <% } %>
+                                
+                                <% }) %>
                             </select>
+                        </label>
                             <button>Update Database</button>
                         </form>
                     </div>
@@ -47,5 +51,6 @@
     <footer>
             <% include ../../layout/footer %>
     </footer>
+    </div>
 </body>
 </html>

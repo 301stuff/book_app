@@ -1,3 +1,12 @@
+/* Button styling for all forms  */
+button {
+    background-color: rgb(160, 201, 184);
+    width: 75%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin: 10px;
+}
 
 /*============================= PopUp Hamburger Menu =====================================*/
 
@@ -25,7 +34,7 @@
 }
 
 .overlay li a:hover {
-    color: red;
+    color: rgb(168, 202, 189);
 }
 
 .overlay:target {
@@ -44,23 +53,42 @@
 
 /*================= Styles for the SearchForm from searches/new.ejs page ================*/
 .searchPg {
-    background-color:rgb(216, 216, 216); 
+    background-color:rgba(216, 216, 216, 0.925); 
     width:85%;
-    margin: 0% 5% 2% 5%;
+    margin: 50px 5% 5% 5%;
     border-width: 0px;
     border-radius: 3px;
     /* height: 4em; */
-    padding:auto 0px;
+    /* padding:auto 0px; */
     line-height: 4em;
 }
 .searchForm :first-child{
-    background-color: white;
-    margin-top: 3%;
-    height: 4em;
+    /* background-color: rgb(158, 145, 145); */
+    /* margin-top: 10%;
+    height: 4em; */
 }
 
-.searchForm form :first-child label{
+/* .searchForm form :first-child label{
    padding-left: 3em;
+} */
+
+.searchRadio{
+    /* background-color: rgba(53, 51, 50, 0.774); */
+
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+label.searchPg{
+/* width: 50px; */
+/* height: 50px; */
+background-color: rgba(53, 51, 50, 0.774);
+color: azure;
+font-size: 20px;
+border-radius: 20px;
+
 }
 
 .searchForm{
@@ -69,14 +97,6 @@
     flex-direction: column;
 }
 
-button .searchButton{
-    background-color: black;
-    color:white;
-    border-color: black;
-    width: 85%;
-    height: 4em;
-    font-size:1em;
-}
 /*=======================================================================================*/
 
 
@@ -91,14 +111,17 @@ button .searchButton{
 .DetailForm label{
     margin-top:20px;
 }
-.DetailForm input{
-    width: 300px;
+.DetailForm input, .DetailForm select{
+    width: 100%;
     height: 40px;
     box-shadow: 4px 3px 3px rgb(59, 59, 59);
     border-radius: 5px;
     font-size: 15px;
 }
 
+.DetailForm button {
+    width: 100%;
+}
 
 /*=======================================================================================*/
 
