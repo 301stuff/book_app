@@ -23,6 +23,17 @@
                             <input type="hidden" name="_method" value="put">
                             <input type="hidden" name="id" value="<%= item.id %>">
                 <% include ./edit %>
+                <select class="dropdownBookshelf" name="addBooks">
+                                <option value="<%= item.bookshelf %>" selected= 'selected'><%= item.bookshelf %></option>
+                                <% bookshelves.forEach(shelves=>{  %>
+                                 <%   if(shelves.bookshelf !== item.bookshelf){ %>
+                                    <option value="<%= shelves.bookshelf %>"><%= shelves.bookshelf %></option>
+                                    
+                                    <% } %>
+                
+                                    <% }) %>
+                            </select>
+                            <button>Update Database</button>
                         </form>
                     </div>
             </li>
