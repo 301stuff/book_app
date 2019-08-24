@@ -113,23 +113,18 @@ function getBookDetails(request, response){
   client.query(SQL, [id])
     .then(res=> {
       if(res.rowCount > 0) {
-        // console.log(bookshelves);
         response.render('./pages/books/showBook', {bookDetail: res.rows, bookshelves: bookshelves});
       }
 
       else {
         errorHandle(request, response);
-
       }
     })
 
     .catch(error => {
       errorHandle(error, response);
     });
-
 }
-
-
 
 
 //search google books api
@@ -137,7 +132,6 @@ function postSearch(request, response){
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
   if(request.body.search[1] === 'author') {url += `inauthor:${request.body.search[0]}&maxResults=10`;}
   if(request.body.search[1] === 'title') {url += `intitle:${request.body.search[0]}&maxResults=10`;}
-  // console.log('search', url);
   superagent.get(url)
 
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
@@ -150,8 +144,6 @@ function postSearch(request, response){
     .catch(error => {
       errorHandle(error, response);
     });
-
-
 }
 
 
@@ -173,6 +165,7 @@ function postBook(request, response){
     });
 }
 
+//function to delete book from Database
 function deleteBook(request, response){
   let SQL = `DELETE FROM books WHERE id=$1;`;
   let id = request.params.id;
@@ -184,16 +177,10 @@ function deleteBook(request, response){
     });
 }
 
+//Function to update book in database
 function updateBook(request, response){
 
-  // let {title, author, description, isbn, bookshelf, image_url, id} = request.body;
-console.log('user form data', request.body.addBooks);
-
-
   let SQL = `UPDATE books SET title=$1, author=$2, description=$3, isbn=$4, bookshelf=$5, image_url=$6 WHERE id=$7;`;
-
-  // let values = [title, author, description, isbn, bookshelf, image_url, id];
-
 
   const values = [request.body.addBooks[0], request.body.addBooks[1], request.body.addBooks[2], request.body.addBooks[3], request.body.addBooks[6], request.body.addBooks[5]=== './public/styles/book-icon-139.png' ? `../../../${request.body.addBooks[5]}` : request.body.addBooks[5], request.params.id];
 
@@ -210,15 +197,7 @@ console.log('user form data', request.body.addBooks);
 }
 
 
-
-function errorHandle(error, response){
-  response.render('pages/error');
-
-}
-
-
-
-//function to list all bookshelves
+//function to list all existing bookshelves
 
 function addShelf(){
   let SQL = `SELECT DISTINCT bookshelf FROM books;`;
@@ -230,5 +209,11 @@ function addShelf(){
       });
     });
   return bookArray;
+}
+
+//error function
+function errorHandle(error, response){
+  response.render('pages/error');
+
 }
 
